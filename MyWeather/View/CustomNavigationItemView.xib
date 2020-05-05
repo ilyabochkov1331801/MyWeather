@@ -21,19 +21,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nw5-7N-H09">
-                    <rect key="frame" x="0.0" y="90" width="74.5" height="0.0"/>
+                    <rect key="frame" x="5" y="90" width="74.5" height="0.0"/>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opt-PG-mTi">
-                    <rect key="frame" x="339.5" y="90" width="74.5" height="0.0"/>
+                    <rect key="frame" x="334.5" y="90" width="74.5" height="0.0"/>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunset" translatesAutoresizingMaskIntoConstraints="NO" id="aDn-dT-bj3">
-                    <rect key="frame" x="261.5" y="20" width="70" height="70"/>
+                    <rect key="frame" x="259.5" y="20" width="70" height="70"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="aDn-dT-bj3" secondAttribute="height" multiplier="1:1" id="CGW-l4-HkQ"/>
                     </constraints>
@@ -45,26 +45,25 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="lDi-Kq-vOU">
-                    <rect key="frame" x="82.5" y="20" width="70" height="70"/>
+                    <rect key="frame" x="84.5" y="20" width="70" height="70"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="lDi-Kq-vOU" secondAttribute="height" multiplier="1:1" id="rxV-Y6-LL3"/>
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="opt-PG-mTi" firstAttribute="width" secondItem="HNX-9Q-Mut" secondAttribute="width" multiplier="0.18" id="8PR-Dr-aPT"/>
                 <constraint firstItem="HNX-9Q-Mut" firstAttribute="bottom" secondItem="aDn-dT-bj3" secondAttribute="bottom" constant="10" id="Ccg-RK-CV6"/>
-                <constraint firstItem="lDi-Kq-vOU" firstAttribute="leading" secondItem="nw5-7N-H09" secondAttribute="trailing" constant="8" id="DxA-EO-fvW"/>
-                <constraint firstItem="opt-PG-mTi" firstAttribute="leading" secondItem="aDn-dT-bj3" secondAttribute="trailing" constant="8" id="H6X-bm-OGd"/>
+                <constraint firstItem="lDi-Kq-vOU" firstAttribute="leading" secondItem="nw5-7N-H09" secondAttribute="trailing" constant="5" id="DxA-EO-fvW"/>
+                <constraint firstItem="opt-PG-mTi" firstAttribute="leading" secondItem="aDn-dT-bj3" secondAttribute="trailing" constant="5" id="H6X-bm-OGd"/>
                 <constraint firstItem="lDi-Kq-vOU" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.7" id="Hrp-Py-kXY"/>
                 <constraint firstItem="nw5-7N-H09" firstAttribute="width" secondItem="HNX-9Q-Mut" secondAttribute="width" multiplier="0.18" id="Ibb-9w-X01"/>
-                <constraint firstItem="nw5-7N-H09" firstAttribute="leading" secondItem="HNX-9Q-Mut" secondAttribute="leading" id="Khd-ny-Qib"/>
+                <constraint firstItem="nw5-7N-H09" firstAttribute="leading" secondItem="HNX-9Q-Mut" secondAttribute="leading" constant="5" id="Khd-ny-Qib"/>
                 <constraint firstItem="HNX-9Q-Mut" firstAttribute="bottom" secondItem="lDi-Kq-vOU" secondAttribute="bottom" constant="10" id="R1q-m5-xMS"/>
                 <constraint firstItem="HNX-9Q-Mut" firstAttribute="bottom" secondItem="opt-PG-mTi" secondAttribute="bottom" constant="10" id="R9U-yN-duc"/>
                 <constraint firstItem="HNX-9Q-Mut" firstAttribute="bottom" secondItem="jej-UL-L4A" secondAttribute="bottom" constant="10" id="SNj-dK-hiT"/>
                 <constraint firstItem="jej-UL-L4A" firstAttribute="centerX" secondItem="HNX-9Q-Mut" secondAttribute="centerX" id="VeL-3m-xBF"/>
-                <constraint firstItem="HNX-9Q-Mut" firstAttribute="trailing" secondItem="opt-PG-mTi" secondAttribute="trailing" id="fxv-50-Ezx"/>
+                <constraint firstItem="HNX-9Q-Mut" firstAttribute="trailing" secondItem="opt-PG-mTi" secondAttribute="trailing" constant="5" id="fxv-50-Ezx"/>
                 <constraint firstItem="jej-UL-L4A" firstAttribute="width" secondItem="HNX-9Q-Mut" secondAttribute="width" multiplier="0.3" id="hCp-2a-SAM"/>
                 <constraint firstItem="HNX-9Q-Mut" firstAttribute="bottom" secondItem="nw5-7N-H09" secondAttribute="bottom" constant="10" id="iMG-tv-MRc"/>
                 <constraint firstItem="aDn-dT-bj3" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.7" id="t8W-2p-Iob"/>

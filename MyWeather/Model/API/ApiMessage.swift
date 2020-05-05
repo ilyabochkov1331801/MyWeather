@@ -22,7 +22,6 @@ struct City: Codable {
 struct Forecast: Codable {
     let main: Main
     let weather: Array<Weather>
-    let clouds: Clouds
     let wind: Wind
     let dt_txt: String
 }
@@ -37,11 +36,6 @@ struct Weather: Codable {
     let icon: String
 }
 
-struct Clouds: Codable {
-    let all: Int
-}
-
 struct Wind: Codable {
     let speed: Double
-    let deg: Int
 }

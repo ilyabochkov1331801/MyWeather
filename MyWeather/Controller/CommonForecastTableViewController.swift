@@ -13,6 +13,7 @@ class CommonForecastTableViewController: UITableViewController {
     
     private let forecastModel = ForecastModel()
     private let locationManager = CLLocationManager()
+    private let spinnerView = UIActivityIndicatorView(style: .large)
     private var apiMessage: ApiMessage?
     private var location: CLLocation?
     
@@ -24,6 +25,9 @@ class CommonForecastTableViewController: UITableViewController {
         locationManager.requestLocation()
         tableView.register(UINib(nibName: "CommonForecastTableViewCell", bundle: nil), forCellReuseIdentifier: "CommonForecastTableViewCell")
         tableView.rowHeight = 60
+        spinnerView.hidesWhenStopped = true
+        navigationItem.titleView = spinnerView
+        spinnerView.startAnimating()
     }
 
     // MARK: - Table view data source
@@ -75,8 +79,10 @@ extension CommonForecastTableViewController: ForecastModelDelegate {
         customNavigationItemView.updateData(sunriseTime: apiMessage.city.sunrise,
                                             cityName: apiMessage.city.name,
                                             sunsetTime: apiMessage.city.sunset)
+        customNavigationItemView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 0)
         navigationItem.titleView = customNavigationItemView
         self.apiMessage = apiMessage
+        spinnerView.stopAnimating()
         tableView.reloadData()
     }
 }

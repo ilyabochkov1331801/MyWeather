@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA74F67C2460AC0800CF5A30 /* TemperatureConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA74F67B2460AC0800CF5A30 /* TemperatureConverter.swift */; };
 		EA92E715245F6AC800D4581F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92E714245F6AC800D4581F /* AppDelegate.swift */; };
 		EA92E717245F6AC800D4581F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92E716245F6AC800D4581F /* SceneDelegate.swift */; };
 		EA92E71E245F6AC900D4581F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA92E71D245F6AC900D4581F /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA74F67B2460AC0800CF5A30 /* TemperatureConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureConverter.swift; sourceTree = "<group>"; };
 		EA92E711245F6AC800D4581F /* MyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA92E714245F6AC800D4581F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA92E716245F6AC800D4581F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				EA92E72B245F6B7C00D4581F /* ForecastModel.swift */,
 				EA92E72D245F6B9000D4581F /* ForecastModelDelegate.swift */,
 				EA92E74524604C7E00D4581F /* IconModel.swift */,
+				EA74F67B2460AC0800CF5A30 /* TemperatureConverter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				EA92E73F24603BED00D4581F /* CommonForecastTableViewCell.swift in Sources */,
 				EA92E74624604C7E00D4581F /* IconModel.swift in Sources */,
 				EA92E743246049E700D4581F /* AccurateForecastViewController.swift in Sources */,
+				EA74F67C2460AC0800CF5A30 /* TemperatureConverter.swift in Sources */,
 				EA92E72E245F6B9000D4581F /* ForecastModelDelegate.swift in Sources */,
 				EA92E717245F6AC800D4581F /* SceneDelegate.swift in Sources */,
 				EA92E72C245F6B7C00D4581F /* ForecastModel.swift in Sources */,

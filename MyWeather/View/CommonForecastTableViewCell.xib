@@ -19,22 +19,23 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oil-vq-onk">
                         <rect key="frame" x="16" y="12" width="0.0" height="47"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.71421716000000002" green="0.38474720340000002" blue="0.1928053257" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFA-ag-O1Y">
                         <rect key="frame" x="304" y="59" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.71421716000000002" green="0.38474720340000002" blue="0.1928053257" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ga-pj-2Sb">
                         <rect key="frame" x="304" y="12" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.71421716000000002" green="0.38474720340000002" blue="0.1928053257" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                 <constraints>
                     <constraint firstItem="oil-vq-onk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="8L4-IF-Una"/>
                     <constraint firstAttribute="bottom" secondItem="CFA-ag-O1Y" secondAttribute="bottom" constant="11" id="9fY-8e-2rf"/>

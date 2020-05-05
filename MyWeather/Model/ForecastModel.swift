@@ -13,18 +13,23 @@ import CoreLocation
 class ForecastModel {
     var delegate: ForecastModelDelegate?
     private let apiModel: ApiModel
-    private(set) var location: CLLocation? {
-        didSet {
-            let apiModelResult = apiModel.apiMessage(with: location?.coordinate)
-            delegate?.updateForecast(with: apiModelResult.0, error: apiModelResult.1)
-        }
-    }
-
+    
     init() {
         apiModel = ApiModel()
     }
     
-    func updateLocation(with location: CLLocation?) {
-        self.location = location
+    func updateForecast(with coordinates: CLLocationCoordinate2D?) {
+        let apiModelResult = apiModel.apiMessage(with: coordinates)
+        delegate?.updateForecast(with: apiModelResult.0, error: apiModelResult.1)
+    }
+    
+    func updateForecast(with cityName: String) {
+        let positionConverter = PositionConverter()
+        let positionConvertResult = positionConverter.convertToLocation(with: cityName)
+        if let error = positionConvertResult.1 {
+            delegate?.updateForecast(with: nil, error: error)
+        } else {
+            updateForecast(with: positionConvertResult.0)
+        }
     }
 }

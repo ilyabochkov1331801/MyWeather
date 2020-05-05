@@ -13,6 +13,6 @@ class TemperatureConverter {
         guard let kelvin = kelvin else {
             return "No data"
         }
-        return String(format:"%.2f", kelvin - 273.1) + " ℃"
+        return String(format:"%.1f", kelvin - 273.1) + " ℃"
     }
 }

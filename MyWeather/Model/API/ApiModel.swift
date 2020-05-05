@@ -17,7 +17,6 @@ class ApiModel {
         guard let coordinates = coordinates else {
             return (nil, ApiModelErrors.CoordinatesError)
         }
-        
         var apiURLComponents = URLComponents(string: ApiModel.apiURL)
         
         apiURLComponents?.queryItems = [
@@ -38,8 +37,7 @@ class ApiModel {
             (data, response, error) in
             if let error = error {
                 urlSessionError = error
-            }
-            if let response = response as? HTTPURLResponse {
+            } else if let response = response as? HTTPURLResponse {
                 switch response.statusCode {
                 case 200...300:
                     break

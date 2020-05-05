@@ -16,6 +16,7 @@ class CommonForecastTableViewController: UITableViewController {
     private let spinnerView = UIActivityIndicatorView(style: .large)
     private var apiMessage: ApiMessage?
     private var location: CLLocation?
+    private var customNavigationItemView: CustomNavigationItemView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,12 @@ class CommonForecastTableViewController: UITableViewController {
         spinnerView.hidesWhenStopped = true
         navigationItem.titleView = spinnerView
         spinnerView.startAnimating()
+        customNavigationItemView = CustomNavigationItemView()
+        customNavigationItemView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 0)
+        navigationItem.titleView = customNavigationItemView
+        let navigationItemTupGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(navigationItemTupped(param:)))
+        navigationItemTupGestureRecognizer.delegate = self
+        customNavigationItemView.addGestureRecognizer(navigationItemTupGestureRecognizer)
     }
 
     // MARK: - Table view data source
@@ -39,7 +46,6 @@ class CommonForecastTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apiMessage?.list.count ?? 0
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommonForecastTableViewCell", for: indexPath) as! CommonForecastTableViewCell
@@ -75,24 +81,54 @@ extension CommonForecastTableViewController: ForecastModelDelegate {
         guard let apiMessage = apiMessage else {
             return
         }
-        let customNavigationItemView = CustomNavigationItemView()
-        customNavigationItemView.updateData(sunriseTime: apiMessage.city.sunrise,
+        (navigationItem.titleView as! CustomNavigationItemView).updateData(sunriseTime: apiMessage.city.sunrise,
                                             cityName: apiMessage.city.name,
                                             sunsetTime: apiMessage.city.sunset)
-        customNavigationItemView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 0)
-        navigationItem.titleView = customNavigationItemView
         self.apiMessage = apiMessage
-        spinnerView.stopAnimating()
+        if spinnerView.isAnimating {
+            spinnerView.stopAnimating()
+        }
         tableView.reloadData()
     }
 }
 
 extension CommonForecastTableViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        forecastModel.updateLocation(with: locations.first!)
+        forecastModel.updateForecast(with: manager.location?.coordinate)
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         showAlert(with: error)
     }
 }
 
+extension CommonForecastTableViewController: UIGestureRecognizerDelegate {
+    @objc func navigationItemTupped(param: UITapGestureRecognizer) {
+        let cityNameAlert = UIAlertController(title: nil, message: "Enter city name", preferredStyle: .alert)
+        let cityNameAlertAction = UIAlertAction(title: "Show forecast", style: .default) {
+            [weak self] (_) in
+            guard let cityName = cityNameAlert.textFields?.first?.text else {
+                return
+            }
+            guard cityNameAlert.textFields?.first?.isEditing == false else {
+                return
+            }
+            self?.forecastModel.updateForecast(with: cityName)
+        }
+        cityNameAlert.addTextField {
+            [weak self] (textFiled) in
+            textFiled.delegate = self
+            textFiled.placeholder = "City"
+        }
+        cityNameAlert.addAction(cityNameAlertAction)
+        present(cityNameAlert, animated: true, completion: nil)
+    }
+}
+
+extension CommonForecastTableViewController: UITextFieldDelegate {
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        guard let text = textField.text, text != "" else {
+            return false
+        }
+        return true
+    }
+}

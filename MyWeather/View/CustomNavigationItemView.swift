@@ -21,7 +21,7 @@ class CustomNavigationItemView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [ .flexibleHeight, .flexibleWidth ]
     }
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -46,3 +46,4 @@ class CustomNavigationItemView: UIView {
         return dateFormatter.string(from: date)
     }
 }
+

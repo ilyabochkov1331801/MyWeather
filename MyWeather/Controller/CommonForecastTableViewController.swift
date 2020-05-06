@@ -105,30 +105,17 @@ extension CommonForecastTableViewController: UIGestureRecognizerDelegate {
     @objc func navigationItemTupped(param: UITapGestureRecognizer) {
         let cityNameAlert = UIAlertController(title: nil, message: "Enter city name", preferredStyle: .alert)
         let cityNameAlertCancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        cityNameAlert.addTextField {
-            [weak self] (textFiled) in
-            textFiled.delegate = self
-            textFiled.placeholder = "City"
-            textFiled.restorationIdentifier = "CityNameTextFiled"
+        let cityNameAlertReloadAction = UIAlertAction(title: "Reload", style: .default) {
+            [weak self] (_) in
+            guard let cityName = cityNameAlert.textFields?.first?.text, cityName != "" else {
+                return
+            }
+            self?.forecastModel.updateForecast(with: cityName)
         }
+        cityNameAlert.addTextField(configurationHandler: nil)
         cityNameAlert.addAction(cityNameAlertCancelAction)
+        cityNameAlert.addAction(cityNameAlertReloadAction)
         present(cityNameAlert, animated: true, completion: nil)
-    }
-}
-
-extension CommonForecastTableViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard textField.restorationIdentifier == "CityNameTextFiled" else {
-            textField.resignFirstResponder()
-            return true
-        }
-        guard let cityName = textField.text,
-            cityName != "" else {
-            return false
-        }
-        resignFirstResponder()
-        self.forecastModel.updateForecast(with: cityName)
-        return true
     }
 }
 

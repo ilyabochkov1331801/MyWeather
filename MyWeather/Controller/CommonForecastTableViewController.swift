@@ -104,31 +104,31 @@ extension CommonForecastTableViewController: CLLocationManagerDelegate {
 extension CommonForecastTableViewController: UIGestureRecognizerDelegate {
     @objc func navigationItemTupped(param: UITapGestureRecognizer) {
         let cityNameAlert = UIAlertController(title: nil, message: "Enter city name", preferredStyle: .alert)
-        let cityNameAlertAction = UIAlertAction(title: "Show forecast", style: .default) {
-            [weak self] (_) in
-            guard let cityName = cityNameAlert.textFields?.first?.text else {
-                return
-            }
-            guard cityNameAlert.textFields?.first?.isEditing == false else {
-                return
-            }
-            self?.forecastModel.updateForecast(with: cityName)
-        }
+        let cityNameAlertCancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         cityNameAlert.addTextField {
             [weak self] (textFiled) in
             textFiled.delegate = self
             textFiled.placeholder = "City"
+            textFiled.restorationIdentifier = "CityNameTextFiled"
         }
-        cityNameAlert.addAction(cityNameAlertAction)
+        cityNameAlert.addAction(cityNameAlertCancelAction)
         present(cityNameAlert, animated: true, completion: nil)
     }
 }
 
 extension CommonForecastTableViewController: UITextFieldDelegate {
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        guard let text = textField.text, text != "" else {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard textField.restorationIdentifier == "CityNameTextFiled" else {
+            textField.resignFirstResponder()
+            return true
+        }
+        guard let cityName = textField.text,
+            cityName != "" else {
             return false
         }
+        resignFirstResponder()
+        self.forecastModel.updateForecast(with: cityName)
         return true
     }
 }
+

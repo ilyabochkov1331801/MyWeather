@@ -25,6 +25,7 @@
 		EA92E743246049E700D4581F /* AccurateForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92E741246049E700D4581F /* AccurateForecastViewController.swift */; };
 		EA92E744246049E700D4581F /* AccurateForecastViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA92E742246049E700D4581F /* AccurateForecastViewController.xib */; };
 		EA92E74624604C7E00D4581F /* IconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92E74524604C7E00D4581F /* IconModel.swift */; };
+		EAC20060246440730088D908 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = EAC2005F246440730088D908 /* readme.txt */; };
 		EAF15CB42460603C00A9F043 /* CustomNavigationItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF15CB32460603C00A9F043 /* CustomNavigationItemView.xib */; };
 		EAF15CB62460632600A9F043 /* CustomNavigationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF15CB52460632600A9F043 /* CustomNavigationItemView.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		EA92E741246049E700D4581F /* AccurateForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccurateForecastViewController.swift; sourceTree = "<group>"; };
 		EA92E742246049E700D4581F /* AccurateForecastViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccurateForecastViewController.xib; sourceTree = "<group>"; };
 		EA92E74524604C7E00D4581F /* IconModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconModel.swift; sourceTree = "<group>"; };
+		EAC2005F246440730088D908 /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		EAF15CB32460603C00A9F043 /* CustomNavigationItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomNavigationItemView.xib; sourceTree = "<group>"; };
 		EAF15CB52460632600A9F043 /* CustomNavigationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +71,7 @@
 		EA92E708245F6AC800D4581F = {
 			isa = PBXGroup;
 			children = (
+				EAC2005F246440730088D908 /* readme.txt */,
 				EA92E713245F6AC800D4581F /* MyWeather */,
 				EA92E712245F6AC800D4581F /* Products */,
 				EA92E73A2460177500D4581F /* Frameworks */,
@@ -213,6 +216,7 @@
 				EA92E71E245F6AC900D4581F /* Assets.xcassets in Resources */,
 				EAF15CB42460603C00A9F043 /* CustomNavigationItemView.xib in Resources */,
 				EA92E739245FFDFC00D4581F /* CommonForecastTableViewController.xib in Resources */,
+				EAC20060246440730088D908 /* readme.txt in Resources */,
 				EA92E74024603BED00D4581F /* CommonForecastTableViewCell.xib in Resources */,
 				EA92E744246049E700D4581F /* AccurateForecastViewController.xib in Resources */,
 			);

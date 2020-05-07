@@ -15,13 +15,13 @@ class PositionConverter {
         var geoCoderError: Error?
         var coordinates: CLLocationCoordinate2D?
         let semaphore = DispatchSemaphore(value: 0)
+        //  Не заходит в CLGeocodeCompletionHandler и, соответственное, стоит на семафоре
         geoCoder.geocodeAddressString(cityName) {
             (placeMarks, error) in
             if let error = error {
                 geoCoderError = error
             } else {
-                let buf = placeMarks?.first?.location?.coordinate
-                coordinates = buf
+                coordinates = placeMarks?.first?.location?.coordinate
             }
             semaphore.signal()
         }

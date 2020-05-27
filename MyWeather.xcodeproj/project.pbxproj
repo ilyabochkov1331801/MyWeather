@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EA09909C24620B550040386E /* PositionConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09909B24620B550040386E /* PositionConverter.swift */; };
 		EA74F67C2460AC0800CF5A30 /* TemperatureConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA74F67B2460AC0800CF5A30 /* TemperatureConverter.swift */; };
 		EA92E715245F6AC800D4581F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92E714245F6AC800D4581F /* AppDelegate.swift */; };
 		EA92E717245F6AC800D4581F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92E716245F6AC800D4581F /* SceneDelegate.swift */; };
@@ -31,7 +30,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EA09909B24620B550040386E /* PositionConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionConverter.swift; sourceTree = "<group>"; };
 		EA74F67B2460AC0800CF5A30 /* TemperatureConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureConverter.swift; sourceTree = "<group>"; };
 		EA92E711245F6AC800D4581F /* MyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA92E714245F6AC800D4581F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 				EA92E72D245F6B9000D4581F /* ForecastModelDelegate.swift */,
 				EA92E74524604C7E00D4581F /* IconModel.swift */,
 				EA74F67B2460AC0800CF5A30 /* TemperatureConverter.swift */,
-				EA09909B24620B550040386E /* PositionConverter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -232,7 +229,6 @@
 				EA92E730245F6EF600D4581F /* ApiModel.swift in Sources */,
 				EA92E738245FFDFC00D4581F /* CommonForecastTableViewController.swift in Sources */,
 				EA92E715245F6AC800D4581F /* AppDelegate.swift in Sources */,
-				EA09909C24620B550040386E /* PositionConverter.swift in Sources */,
 				EA92E72A245F6AFA00D4581F /* ApiMessage.swift in Sources */,
 				EA92E73F24603BED00D4581F /* CommonForecastTableViewCell.swift in Sources */,
 				EA92E74624604C7E00D4581F /* IconModel.swift in Sources */,

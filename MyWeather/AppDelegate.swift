@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let commonForecastNavigationController = UINavigationController(rootViewController: commonForecastTableViewController)
         commonForecastNavigationController.tabBarItem = UITabBarItem(title: "Forecast", image: UIImage(systemName: "thermometer"), tag: 0)
         commonForecastNavigationController.navigationBar.backgroundColor = UIColor(red: 0.121569, green: 0.129412, blue: 0.241176, alpha: 1)
+        commonForecastNavigationController.navigationBar.tintColor = UIColor(red: 0.121569, green: 0.129412, blue: 0.241176, alpha: 1)
+        tabBarController.tabBar.tintColor = UIColor(red: 0.121569, green: 0.129412, blue: 0.241176, alpha: 1)
         tabBarController.viewControllers = [ commonForecastNavigationController ]
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()

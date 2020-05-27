@@ -18,18 +18,62 @@ class ForecastModel {
         apiModel = ApiModel()
     }
     
-    func updateForecast(with coordinates: CLLocationCoordinate2D?) {
-        let apiModelResult = apiModel.apiMessage(with: coordinates)
-        delegate?.updateForecast(with: apiModelResult.0, error: apiModelResult.1)
+    func updateForecast(with coordinates: CLLocationCoordinate2D?, error: Error?) {
+        guard error == nil else  {
+            delegate?.updateForecast(with: nil, error: error)
+            return
+        }
+        apiModel.apiMessage(with: coordinates) {
+            [weak self] (data, response, error) in
+            guard error == nil else {
+                DispatchQueue.main.async {
+                    self?.delegate?.updateForecast(with: nil, error: error)
+                }
+                return
+            }
+            guard let response = response as? HTTPURLResponse else {
+                DispatchQueue.main.async {
+                    self?.delegate?.updateForecast(with: nil, error: ApiModelErrors.ResponseError)
+                }
+                return
+            }
+            switch response.statusCode {
+            case 200...300:
+                if let data = data, let apiMessage = try? JSONDecoder().decode(ApiMessage.self, from: data) {
+                    DispatchQueue.main.async {
+                        self?.delegate?.updateForecast(with: apiMessage, error: nil)
+                    }
+                }
+            default:
+                DispatchQueue.main.async {
+                    self?.delegate?.updateForecast(with: nil, error: ApiModelErrors.StatusError(code: response.statusCode))
+                }
+            }
+        }
     }
     
-    func updateForecast(with cityName: String) {
-        let positionConverter = PositionConverter()
-        let positionConvertResult = positionConverter.convertToLocation(with: cityName)
-        if let error = positionConvertResult.1 {
-            delegate?.updateForecast(with: nil, error: error)
-        } else {
-            updateForecast(with: positionConvertResult.0)
+    func updateForecast(with cityName: String?) {
+        guard let cityName = cityName else {
+            delegate?.updateForecast(with: nil, error: ApiModelErrors.WrongPlace)
+            return
         }
+        CLGeocoder().geocodeAddressString(cityName) {
+            [weak self] (placeMarks, error) in
+            if let cityLocationCoordinates = placeMarks?.first?.location?.coordinate {
+                self?.updateForecast(with: CLLocationCoordinate2D(
+                    latitude: round(cityLocationCoordinates.latitude),
+                    longitude: round(cityLocationCoordinates.latitude)), error: error)
+            }
+        }
+    }
+}
+
+
+extension Double {
+    func round(_ number: Double?) -> Double? {
+        guard let number = number else {
+            return nil
+        }
+        return (number * 100.0).rounded() / 100.0
     }
 }

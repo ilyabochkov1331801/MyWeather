@@ -12,46 +12,22 @@ import CoreLocation
 class ApiModel {
     private static let apiURL = "https://api.openweathermap.org/data/2.5/forecast?"
     private static let key = "2a6938098eb62bba02708327e9d0194e"
-    func apiMessage(with coordinates: CLLocationCoordinate2D?) -> (ApiMessage?, Error?) {
-        
+    func apiMessage(with coordinates: CLLocationCoordinate2D?, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
         guard let coordinates = coordinates else {
-            return (nil, ApiModelErrors.CoordinatesError)
+            completionHandler(nil, nil, ApiModelErrors.CoordinatesError)
+            return
         }
         var apiURLComponents = URLComponents(string: ApiModel.apiURL)
-        
         apiURLComponents?.queryItems = [
             URLQueryItem(name: "lat", value: String(coordinates.latitude)),
             URLQueryItem(name: "lon", value: String(coordinates.longitude)),
             URLQueryItem(name: "appid", value: ApiModel.key)
         ]
-        
         guard let url = apiURLComponents?.url else {
-            return (nil, ApiModelErrors.URLComponentsError)
+            completionHandler(nil, nil, ApiModelErrors.URLComponentsError)
+            return
         }
-        
-        var message: ApiMessage?
-        var urlSessionError: Error?
-        let semaphore = DispatchSemaphore(value: 0)
-        
-        let urlSessionDataTask = URLSession.shared.dataTask(with: url) {
-            (data, response, error) in
-            if let error = error {
-                urlSessionError = error
-            } else if let response = response as? HTTPURLResponse {
-                switch response.statusCode {
-                case 200...300:
-                    break
-                default:
-                    urlSessionError = ApiModelErrors.StatusError(code: response.statusCode)
-                }
-            }
-            if let data = data {
-                message = try? JSONDecoder().decode(ApiMessage.self, from: data)
-            }
-            semaphore.signal()
-        }
+        let urlSessionDataTask = URLSession.shared.dataTask(with: url, completionHandler: completionHandler)
         urlSessionDataTask.resume()
-        semaphore.wait()
-        return (message, urlSessionError)
     }
 }

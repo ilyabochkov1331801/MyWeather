@@ -12,4 +12,7 @@ enum ApiModelErrors: Error {
     case URLComponentsError
     case CoordinatesError
     case StatusError(code: Int)
+    case WrongPlace
+    case ResponseError
+    case WrongApiMessage
 }

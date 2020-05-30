@@ -92,8 +92,7 @@ extension CommonForecastTableViewController: ForecastModelDelegate {
 
 extension CommonForecastTableViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        forecastModel.updateForecast(with: manager.location?.coordinate, error: nil)
+        forecastModel.updateForecast(with: manager.location?.coordinate)
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         present(configureErrorAlert(with: error), animated: true, completion: nil)

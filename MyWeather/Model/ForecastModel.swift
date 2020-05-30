@@ -18,7 +18,7 @@ class ForecastModel {
         apiModel = ApiModel()
     }
     
-    func updateForecast(with coordinates: CLLocationCoordinate2D?, error: Error?) {
+    private func updateForecast(with coordinates: CLLocationCoordinate2D?, error: Error?) {
         guard error == nil else  {
             delegate?.updateForecast(with: nil, error: error)
             return
@@ -65,6 +65,10 @@ class ForecastModel {
                     longitude: round(cityLocationCoordinates.latitude)), error: error)
             }
         }
+    }
+    
+    func updateForecast(with coordinates: CLLocationCoordinate2D?) {
+        updateForecast(with: coordinates, error: nil)
     }
 }
 
